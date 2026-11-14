@@ -1,5 +1,10 @@
 name = "once-cheats--com"
 compatibility_date = "2025-11-15"
 
+# Static site output from @astrojs/cloudflare (HTML/assets under dist/client).
 [assets]
 directory = "./dist/client"
+
+# Cloudflare dashboard often runs only `wrangler deploy` — ensure full pipeline runs.
+[build]
+command = "npm run build"

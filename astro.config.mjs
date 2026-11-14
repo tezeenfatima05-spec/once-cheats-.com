@@ -6,7 +6,10 @@ import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
   output: 'static',
-  adapter: cloudflare(),
+  session: false,
+  adapter: cloudflare({
+    imageService: 'compile',
+  }),
   site: 'https://oncecheats.com',
   trailingSlash: 'always',
   redirects: {
