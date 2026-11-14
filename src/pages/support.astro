@@ -5,6 +5,10 @@ import { resolvePageSeo } from '../config/seo';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContactSupportSection from '../components/ContactSupportSection.astro';
 import { breadcrumbSchema, webPageSchema } from '../utils/schema';
+import { DISCORD_INVITE_URL } from '../config/site';
+import { Button } from '@/components/starwind/button';
+import Icon from '../components/icons/Icon.astro';
+import { EXTERNAL_LINK_REL } from '../utils/link';
 
 const seo = resolvePageSeo('/support/');
 ---
@@ -12,6 +16,7 @@ const seo = resolvePageSeo('/support/');
 <BaseLayout
   title={seo.title}
   description={seo.description}
+  keywords={seo.keywords}
   jsonLd={[
     webPageSchema({
       name: t.support.title,
@@ -31,6 +36,20 @@ const seo = resolvePageSeo('/support/');
         { name: 'Support', path: '/support/' },
       ]}
     />
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <Button
+        as="a"
+        href={DISCORD_INVITE_URL}
+        variant="primary"
+        size="lg"
+        target="_blank"
+        rel={EXTERNAL_LINK_REL}
+      >
+        Join Discord
+        <Icon name="compatDiscord" size={18} />
+      </Button>
+      <p class="text-sm text-muted-foreground">Live community — opens Discord in a new tab.</p>
+    </div>
   </div>
   <ContactSupportSection titleId="support-page-title" showTicketTips />
 </BaseLayout>

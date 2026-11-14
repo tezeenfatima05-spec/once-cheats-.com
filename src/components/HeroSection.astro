@@ -1,6 +1,6 @@
 ---
 import { t } from '../i18n';
-import { ROUTES } from '../utils/path';
+import { CHECKOUT, CHECKOUT_LINK_REL } from '../config/checkout';
 import { heroSlides } from '../data/products';
 import { compatibilityIcons, heroStatIcons, heroStatusPills } from '../data/sectionIcons';
 import ImageSlider from './ImageSlider.astro';
@@ -42,24 +42,14 @@ const heroMarqueePills = [
         <div class="flex flex-wrap justify-start gap-3 sm:gap-4">
           <Button
             as="a"
-            href={ROUTES.products}
-            data-scroll-target="products"
+            href={CHECKOUT.onceHuman}
+            rel={CHECKOUT_LINK_REL}
             variant="primary"
             size="lg"
             class="rounded-xl"
           >
-            {h.ctaPrimary}
+            {h.ctaBuyNow}
             <Icon name="arrowRight" size={18} />
-          </Button>
-          <Button
-            as="a"
-            href="/support/"
-            variant="secondary"
-            size="lg"
-            class="rounded-xl"
-          >
-            <Icon name="navSupport" size={18} />
-            {h.ctaSupport}
           </Button>
         </div>
       </div>

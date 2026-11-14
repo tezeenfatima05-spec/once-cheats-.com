@@ -1,56 +1,62 @@
 === index.html ===
-Dota 2 Cheats &amp; Hacks | Scripts, Map Hack &amp; ESP
-Dota 2 cheats for PC ranked: scripts, map hack, zoom hack, and skin changer tiers updated every patch at dotacheats.com.
-https://dotacheats.com/
+Once Human Cheats for PC | ESP &amp; Aimbot Features
+Explore Once Human cheats for PC, compare available features, check compatibility details, and learn the risks and options before you buy.
+https://oncecheats.com/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
-=== cheats/index.html ===
-Dota 2 Cheat Tiers | Lite, Pro &amp; Elite
-Compare Lite, Pro, and Elite dota cheats—ESP, scripts, map hack, and automation modules for Steam ranked on Windows.
-https://dotacheats.com/cheats/
+
+=== products/once-human/pc-software/index.html ===
+Once Human PC Cheats | ESP &amp; Aim Assist
+Feature overview for Once Human PC cheats: ESP, radar, loot filters, aim assist, hotkeys, and config profiles—Windows Steam and Epic only.
+https://oncecheats.com/products/once-human/pc-software/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
-=== cheats/lite/index.html ===
-Lite Dota 2 Cheats | DotaCheats
-Entry tier for dota cheats with player ESP, ward locator, jungle awareness and minimap overlay.
-https://dotacheats.com/cheats/lite/
+
+=== products/once-human/hwid-spoofer/index.html ===
+HWID Spoofer Product | Once Human PC
+Neutral overview of HWID Spoofer for PC operators—when to read merchant requirements, risks, and separate checkout from main Once Human cheats.
+https://oncecheats.com/products/once-human/hwid-spoofer/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
-=== blog/index.html ===
-Dota 2 Cheats Guides &amp; Patch Notes
-Setup guides, Lite vs Pro comparisons, VAC patch checklists, and ranked config tips for dota cheats.
-https://dotacheats.com/blog/
+
+=== blogs/index.html ===
+Once Human Cheats Guides &amp; Buying Tips
+Trending Once Human cheats guides—ESP, aim assist, radar, safety, installation, patches, and PC buying tips for Steam and Epic.
+https://oncecheats.com/blogs/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
-=== blog/dota-2-cheat-codes-guide/index.html ===
-Dota 2 cheat codes guide: console commands for | DotaCheats
-Full list of Dota 2 cheat codes for custom lobbies—gold, levels, vision, hero spawn and item commands.
-https://dotacheats.com/blog/dota-2-cheat-codes-guide/
+
+=== blogs/best-once-human-cheats/index.html ===
+Best Once Human Cheats for PC | Buying Guide
+Compare Once Human PC software modules, utilities, and checkout paths before you buy—ESP, radar, aim assist, and honest PC-only scope.
+https://oncecheats.com/blogs/best-once-human-cheats/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
+
+=== forum/index.html ===
+Once Human Cheats Forum | Illustrative Discussions
+Read-only example threads about Once Human cheats settings, ESP, compatibility, and checkout—not live customer support.
+https://oncecheats.com/forum/
+index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
+
 === faq/index.html ===
-FAQ | Dota 2 Cheats, Products &amp; Setup
-Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at dotacheats.com.
-https://dotacheats.com/faq/
+FAQ | Once Human Cheats &amp; Setup
+Answers on Once Human cheats compatibility, checkout, utilities, ban risks, and guides before you purchase PC software.
+https://oncecheats.com/faq/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
-=== contact/index.html ===
-Contact &amp; Support | DotaCheats
-Get help with loader setup, HWID, and checkout for Dota 2 cheat tiers and utilities.
-https://dotacheats.com/contact/
+
+=== support/index.html ===
+Support | Once Human Cheats &amp; Discord
+Join Discord for Once Human cheats setup help, email support@oncecheats.com, read FAQ, and use ticket tips for PC software issues.
+https://oncecheats.com/support/
 index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 1
-1
+
 === 404.html ===
-Page not found | DotaCheats
-The page you requested could not be found on dotacheats.com.
-https://dotacheats.com/404/
+Page not found | Once Human Cheats
+The page you requested could not be found on oncecheats.com. Browse Once Human cheats, products, blogs, and FAQ from the homepage.
+https://oncecheats.com/404/
 noindex, nofollow
-0
 1

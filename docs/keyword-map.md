@@ -7,11 +7,15 @@
 | `/products/once-human/hwid-spoofer/` | once human hwid spoofer | hwid spoofer explained, once human ban | Commercial / informational |
 | `/products/once-human/ugc/` | once human account recovery | once human ugc tool, once human unban | Commercial (neutral) |
 | `/products/once-human/cloud-dma/` | once human cloud dma | once human dma | Commercial / informational |
-| `/blogs/` | once human cheats comparison | once human hacks, best once human cheats | Informational |
+| `/blogs/` | once human cheats comparison | best once human cheats, once human cheat comparison | Informational |
 | `/blogs/best-once-human-cheats/` | best once human cheats | buy once human cheats, once human cheats price | Commercial |
+| `/blogs/once-human-cheats-pricing/` | once human cheats price | buy once human cheats | Commercial |
+| `/blogs/once-human-cheats-comparison/` | once human cheats comparison | best once human cheats | Informational |
 | `/blogs/once-human-esp-guide/` | once human esp | once human loot esp, once human overlay | Informational |
 | `/blogs/once-human-aimbot-guide/` | once human aimbot | once human aim assist, aimbot for pc | Informational |
 | `/blogs/once-human-cheats-safety/` | once human ban | once human anti cheat, fair play | Informational |
+| `/blogs/once-human-fps-boost/` | once human fps boost | once human lag fix, once human best settings | Informational |
+| `/blogs/once-human-updates/` | once human update | once human patch notes, software compatibility | Informational |
 | `/blogs/once-human-installation/` | once human installation | once human system requirements | Informational |
 | `/blogs/once-human-pc-requirements/` | once human system requirements | once human compatibility | Informational |
 | `/forum/` | once human cheats (community) | settings, troubleshooting | Informational (illustrative) |

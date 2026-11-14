@@ -1,5 +1,6 @@
 import { t } from '../i18n';
 import { checkoutForSlug, checkoutPath, CHECKOUT } from '../config/checkout';
+import { ONCE_HUMAN_SHOTS } from './onceHumanScreenshots';
 import type { IconName } from '../components/icons/types';
 import { PRODUCT_BASE } from '../config/site';
 
@@ -104,34 +105,34 @@ function acquisitionFor(productName: string): ProductAcquisition {
 
 const slides = {
   esp: {
-    src: `${brand}/preview-esp.png`,
-    alt: 'Illustrative ESP overlay preview for Once Human on PC',
-    caption: 'ESP overlays',
-    captionDesc: 'Player and world highlights with distance and filter controls in the software UI.',
+    src: ONCE_HUMAN_SHOTS.merchantVisuals,
+    alt: 'Once Human PC software visual ESP module screenshot',
+    caption: 'Visual ESP modules',
+    captionDesc: 'Player and world highlight controls in the software UI.',
   },
   aimbot: {
-    src: `${brand}/preview-aimbot.png`,
-    alt: 'Illustrative aim assist settings preview for Once Human on PC',
+    src: ONCE_HUMAN_SHOTS.merchantAimbot,
+    alt: 'Once Human PC software aim assist settings screenshot',
     caption: 'Aim assist settings',
-    captionDesc: 'FOV, smoothing, and target selection sliders—configure before you queue.',
+    captionDesc: 'FOV, smoothing, and target selection in the dashboard.',
   },
   radar: {
-    src: `${brand}/preview-radar.png`,
-    alt: 'Illustrative radar overlay preview for Once Human on PC',
-    caption: 'Radar overlay',
-    captionDesc: 'Compact awareness layer for PvP encounters and open-world travel.',
+    src: ONCE_HUMAN_SHOTS.portalVisuals,
+    alt: 'Once Human loader portal visuals tab screenshot',
+    caption: 'Portal visuals',
+    captionDesc: 'Alternate portal layout for ESP and overlay options.',
   },
   ui: {
-    src: `${brand}/preview-ui.png`,
-    alt: 'Once Human cheat software configuration dashboard on PC',
-    caption: 'Software dashboard',
-    captionDesc: 'Hotkeys, config profiles, and module toggles in one launcher window.',
+    src: ONCE_HUMAN_SHOTS.merchantMisc,
+    alt: 'Once Human PC software misc configuration screenshot',
+    caption: 'Misc configuration',
+    captionDesc: 'Hotkeys, profiles, and module toggles.',
   },
   utility: {
-    src: `${brand}/preview-utility.png`,
-    alt: 'PC utility tool workflow illustration',
-    caption: 'Utility workflow',
-    captionDesc: 'Step-by-step checklist screens for HWID, recovery, or DMA-related tools.',
+    src: ONCE_HUMAN_SHOTS.portalMisc,
+    alt: 'Once Human portal misc settings screenshot',
+    caption: 'Portal misc',
+    captionDesc: 'Additional portal options and utility-related panels.',
   },
 } as const;
 
@@ -183,6 +184,18 @@ const productContent: Record<
         alt: 'Once Human loader portal visuals tab screenshot',
         caption: 'Portal visuals tab',
         captionDesc: 'Alternate portal layout for ESP and overlay options.',
+      },
+      {
+        src: `${merchantShots}/portal-aimbot.webp`,
+        alt: 'Once Human portal aim assist tab screenshot',
+        caption: 'Portal aim assist',
+        captionDesc: 'Aim tuning inside the alternate portal UI.',
+      },
+      {
+        src: `${merchantShots}/portal-misc.webp`,
+        alt: 'Once Human portal misc settings screenshot',
+        caption: 'Portal misc',
+        captionDesc: 'Profiles, hotkeys, and secondary module toggles.',
       },
     ],
     goodToKnow: sharedGoodToKnow,
@@ -290,7 +303,7 @@ const productContent: Record<
       { type: 'h2', text: 'What the merchant listing typically covers' },
       {
         type: 'p',
-        text: 'Workflow builders, evidence templates, and tracking—not hands-on account hacking. See [UGC explained](/blogs/once-human-ugc-tool/) for how it differs from gameplay software.',
+        text: 'Workflow builders, evidence templates, and tracking—not hands-on account tampering. See [UGC explained](/blogs/once-human-ugc-tool/) for how it differs from gameplay software.',
       },
     ],
   },

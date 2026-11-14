@@ -45,6 +45,8 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
   data-blog-card
   data-tag={post.tag}
   data-title={post.title}
+  data-desc={post.desc}
+  data-slug={post.slug}
   data-ts={timestamp}
   data-read-minutes={readMinutes}
 >
@@ -59,7 +61,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
   >
     <ResponsiveImage
       src={post.image}
-      alt=""
+      alt={post.title}
       width={isFeatured ? 960 : 640}
       height={isFeatured ? 540 : 360}
       widths={isFeatured ? undefined : CARD_IMAGE_WIDTHS}

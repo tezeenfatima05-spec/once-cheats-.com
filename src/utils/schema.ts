@@ -29,6 +29,14 @@ export function websiteSchema() {
     inLanguage: 'en-US',
     description:
       'Once Human PC software guides, ESP and aim assist explainers, utilities, and honest compatibility notes.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_ORIGIN}/blogs/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -162,7 +170,6 @@ export function productSchema(input: {
     offers: {
       '@type': 'Offer',
       url: offerUrl(input.offerUrl),
-      priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',

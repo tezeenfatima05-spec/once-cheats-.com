@@ -1,6 +1,6 @@
 import { t } from '../i18n';
 import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
-import { getPageSeoEntry } from './pageSeo';
+import { DEFAULT_PAGE_KEYWORDS, getPageSeoEntry } from './pageSeo';
 
 export const SITE_ORIGIN = `https://${t.site.domain}`;
 
@@ -38,10 +38,18 @@ export function absoluteAssetUrl(path: string): string {
   return `${SITE_ORIGIN}${normalized}`;
 }
 
-export function resolvePageSeo(pathname: string): { title: string; description: string } {
+export function resolvePageSeo(pathname: string): {
+  title: string;
+  description: string;
+  keywords: string;
+} {
   const entry = getPageSeoEntry(pathname);
   if (entry) return entry;
-  return { title: t.site.title, description: t.site.description };
+  return {
+    title: t.site.title,
+    description: t.site.description,
+    keywords: DEFAULT_PAGE_KEYWORDS,
+  };
 }
 
 export function pageTitle(keyword: string, brand = t.site.name): string {

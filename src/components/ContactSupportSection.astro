@@ -4,6 +4,7 @@ import { t } from '../i18n';
 import Icon from './icons/Icon.astro';
 import type { IconName } from './icons/types';
 import { Button } from '@/components/starwind/button';
+import { EXTERNAL_LINK_REL, isExternalHref } from '../utils/link';
 import {
   Card,
   CardContent,
@@ -49,16 +50,24 @@ const c = t.support;
                 <p class="text-sm leading-relaxed text-muted-foreground">{channel.desc}</p>
               </CardContent>
               <CardFooter>
-                <Button
-                  as="a"
-                  href={channel.href}
-                  variant="outline"
-                  size="sm"
-                  class="w-full"
-                >
-                  {channel.linkLabel}
-                  <Icon name="arrowRight" size={17} />
-                </Button>
+                {(() => {
+                  const external = isExternalHref(channel.href);
+                  return (
+                    <Button
+                      as="a"
+                      href={channel.href}
+                      variant="outline"
+                      size="sm"
+                      class="w-full"
+                      {...(external
+                        ? { target: '_blank', rel: EXTERNAL_LINK_REL }
+                        : {})}
+                    >
+                      {channel.linkLabel}
+                      <Icon name="arrowRight" size={17} />
+                    </Button>
+                  );
+                })()}
               </CardFooter>
             </Card>
           </li>

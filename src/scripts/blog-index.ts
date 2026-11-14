@@ -1,9 +1,13 @@
-/** Blog index topic filters + Starwind sort select. */
-export function initBlogIndexFilters(emptyMessage: string) {
+/** Blog index topic filters, search, and Starwind sort select. */
+export function initBlogIndexFilters() {
   const grid = document.getElementById('blog-grid');
   const emptyEl = document.getElementById('blog-empty');
   const sortRoot = document.getElementById('blog-sort-select');
+  const searchInput = document.getElementById('blog-search') as HTMLInputElement | null;
+  const searchForm = searchInput?.closest('form');
   if (!grid) return;
+
+  const emptyMessage = grid.dataset.emptyMessage ?? 'No articles match this filter.';
 
   const filters = document.querySelectorAll<HTMLButtonElement>('[data-blog-filter]');
 
@@ -45,6 +49,21 @@ export function initBlogIndexFilters(emptyMessage: string) {
     return tsB - tsA;
   };
 
+  const matchesSearch = (el: HTMLElement) => {
+    const q = searchInput?.value.trim().toLowerCase() ?? '';
+    if (!q) return true;
+    const hay = [
+      el.getAttribute('data-title'),
+      el.getAttribute('data-desc'),
+      el.getAttribute('data-tag'),
+      el.getAttribute('data-slug'),
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    return hay.includes(q);
+  };
+
   const apply = () => {
     const tag = activeTag();
     const sort = getSort();
@@ -55,7 +74,8 @@ export function initBlogIndexFilters(emptyMessage: string) {
 
     let visibleCount = 0;
     items.forEach((el) => {
-      const match = tag === 'all' || el.getAttribute('data-tag') === tag;
+      const tagMatch = tag === 'all' || el.getAttribute('data-tag') === tag;
+      const match = tagMatch && matchesSearch(el);
       el.classList.toggle('hidden', !match);
       if (match) visibleCount += 1;
     });
@@ -72,6 +92,12 @@ export function initBlogIndexFilters(emptyMessage: string) {
       btn.setAttribute('aria-pressed', 'true');
       apply();
     });
+  });
+
+  searchInput?.addEventListener('input', apply);
+  searchForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    apply();
   });
 
   const onSortChange = (event: Event) => {

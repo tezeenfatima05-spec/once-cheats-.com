@@ -1,29 +1,30 @@
-# Search Console workflow (dotacheats.com)
+# Search Console workflow (oncecheats.com)
 
-You verify the domain at your DNS provider—no HTML meta tags in the repo.
+**Last verified:** November 2026
 
-## Setup (once)
+## Domain property
 
-1. Open [Google Search Console](https://search.google.com/search-console) and add the **domain** property for `dotacheats.com` if it is not already there.
-2. Under **Sitemaps**, submit: `https://dotacheats.com/sitemap.xml`
-3. Repeat in [Bing Webmaster Tools](https://www.bing.com/webmasters) if you use Bing.
+1. Open [Google Search Console](https://search.google.com/search-console) and add the **domain** property for `oncecheats.com` if it is not already there.
+2. Under **Sitemaps**, submit: `https://oncecheats.com/sitemap.xml`
+3. Use **URL Inspection** on key routes after deploy: `/`, `/products/once-human/pc-software/`, `/blogs/`, `/faq/`.
 
-## Monthly tune (15 minutes)
+## Indexing expectations
 
-1. Search Console → **Performance** → **Search results**.
-2. Sort by **Impressions** (last 28 days).
-3. For each query that already maps to a page on your site, open the matching path in [`src/config/pageSeo.ts`](../src/config/pageSeo.ts).
-4. Adjust `title` and `description` so the primary query appears naturally in the title (keep under ~60 characters for the title where possible).
-5. Deploy. Allow 1–2 weeks before judging click-through changes.
+- Production (`oncecheats.com`): indexable — no `noindex` on public pages.
+- Preview hosts (Railway, workers.dev, etc.): served with `noindex` via `scripts/serve.mjs`.
+- Do not submit preview URLs or `/go/` affiliate redirect paths.
 
-## Path cheat sheet
+## Example query → landing page map (candidate keywords, volume unverified)
 
-| Common query intent | Edit path in `pageSeo.ts` |
-| ------------------- | ------------------------- |
-| dota 2 cheats (broad) | `/` |
-| lite / pro / elite | `/cheats/compare/`, `/cheats/lite/`, etc. |
-| map hack, scripts | `/cheats/pro/`, blog posts (titles set per article) |
-| hwid, skin changer | `/products/dota-2-cheats/utilities/` |
-| purchase / refund | `/terms/`, `/contact/` |
+| Query theme | Primary URL |
+| --- | --- |
+| once human cheats (broad) | `/` |
+| once human esp / aimbot | `/blogs/once-human-esp-guide/`, `/products/once-human/pc-software/` |
+| buying / comparison | `/blogs/best-once-human-cheats/`, `/blogs/once-human-cheats-comparison/` |
+| hwid spoofer, ugc, cloud dma | `/products/once-human/utilities/`, related blog posts |
+| safety / fair play | `/blogs/once-human-cheats-safety/` |
 
-Product and blog article pages still use their own titles from content; add entries to `PAGE_SEO` only when you want a fixed override for a specific pathname.
+## After major content updates
+
+1. Run `npm run build` and confirm `dist/sitemap.xml` lists new canonical URLs only on `oncecheats.com`.
+2. Request indexing for changed URLs if needed (avoid mass spam requests).

@@ -1,6 +1,6 @@
 import type { Translations } from './types';
 import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
-import { PRODUCT_BASE } from '../config/site';
+import { DISCORD_INVITE_URL, PRODUCT_BASE } from '../config/site';
 
 const productBase = PRODUCT_BASE;
 
@@ -11,14 +11,14 @@ export const en: Translations = {
     title: 'Once Human Cheats for PC | ESP & Aimbot Features',
     description:
       'Explore Once Human cheats for PC, compare available features, check compatibility details, and learn the risks and options before you buy.',
-    discord: '/support/',
+    discord: DISCORD_INVITE_URL,
   },
   nav: [
     { href: `${productBase}`, label: 'Products' },
     { href: '/blogs/', label: 'Blogs' },
     { href: '/forum/', label: 'Forum' },
     { href: '/faq/', label: 'FAQ' },
-    { href: '/support/', label: 'Support' },
+    { href: DISCORD_INVITE_URL, label: 'Support', ariaLabel: 'Join Once Human Cheats on Discord' },
   ],
   hero: {
     status: 'Once Human — PC build online',
@@ -27,6 +27,7 @@ export const en: Translations = {
     subtitle:
       'Compare Once Human PC software features—ESP, radar, loot filters, and aim assist—for the Steam and Epic Windows client. Console versions are not supported.',
     ctaPrimary: 'View products',
+    ctaBuyNow: 'Buy now',
     ctaSupport: 'Get support',
     modesLabel: 'Once Human modes',
     modes: ['PvE', 'PvP', 'Open World', 'Co-op'],
@@ -282,8 +283,8 @@ export const en: Translations = {
   },
   blog: {
     eyebrow: 'Blog',
-    title: 'Guides and updates',
-    subtitle: 'ESP setup, aim assist tuning, installation, HWID, UGC, Cloud DMA and patch-day checks for Once Human on PC.',
+    title: 'Once Human cheats guides',
+    subtitle: 'Trending PC topics: ESP, radar, aim assist, Meta-Human PvP, patch-day checks, utilities, and buying guides for Steam and Epic.',
     latestTitle: 'Once Human Cheats Guides',
     latestSubtitle: 'Filter by topic or sort to find setup guides, feature deep-dives, and safety notes.',
     filterAll: 'All articles',
@@ -297,116 +298,7 @@ export const en: Translations = {
     emptyFilter: 'No articles match this filter.',
     viewAll: 'View all articles',
     read: 'Read',
-    items: [
-        {
-            "tag": "Guides",
-            "title": "Best Once Human cheats for PC in 2026",
-            "slug": "best-once-human-cheats",
-            "image": "/images/blog/best-once-human-cheats.png",
-            "desc": "Compare ESP, radar, aim assist, and portal delivery for the Windows Steam and Epic client—without console or mobile noise.",
-            "date": "Nov 12, 2026",
-            "readTime": "11 min read"
-        },
-        {
-            "tag": "Features",
-            "title": "Once Human ESP guide: filters, distance, and loot",
-            "slug": "once-human-esp-guide",
-            "image": "/images/blog/once-human-esp-guide.png",
-            "desc": "Configure player ESP, container highlights, and distance caps for open-world travel and PvP zones on PC.",
-            "date": "Nov 11, 2026",
-            "readTime": "9 min read"
-        },
-        {
-            "tag": "Features",
-            "title": "Once Human aimbot guide: FOV, smoothing, and targets",
-            "slug": "once-human-aimbot-guide",
-            "image": "/images/blog/once-human-aimbot-guide.png",
-            "desc": "Tune aim assist FOV, smoothing, and target priority for rifle and shotgun encounters on Windows PC.",
-            "date": "Nov 10, 2026",
-            "readTime": "8 min read"
-        },
-        {
-            "tag": "Guides",
-            "title": "Once Human radar guide: PvP awareness overlay",
-            "slug": "once-human-radar-guide",
-            "image": "/images/blog/once-human-radar-guide.png",
-            "desc": "Size and position the radar overlay for open-world travel, PvP hunts, and squad rotations on PC.",
-            "date": "Nov 9, 2026",
-            "readTime": "7 min read"
-        },
-        {
-            "tag": "Guides",
-            "title": "Once Human cheats safety: risk, reports, and patches",
-            "slug": "once-human-cheats-safety",
-            "image": "/images/blog/once-human-cheats-safety.png",
-            "desc": "NetEase enforcement, report volume, conservative presets, and when not to run gameplay software.",
-            "date": "Nov 8, 2026",
-            "readTime": "10 min read"
-        },
-        {
-            "tag": "Setup",
-            "title": "Once Human cheat installation on Windows PC",
-            "slug": "once-human-installation",
-            "image": "/images/blog/once-human-installation.png",
-            "desc": "Portal download, loader order, Steam vs Epic client checks, and first-session verification on PC.",
-            "date": "Nov 7, 2026",
-            "readTime": "9 min read"
-        },
-        {
-            "tag": "Guides",
-            "title": "Once Human cheats FAQ",
-            "slug": "once-human-cheats-faq",
-            "image": "/images/blog/once-human-cheats-faq.png",
-            "desc": "Straight answers on PC support, licenses, bans, utilities, and Cloud DMA scope.",
-            "date": "Nov 6, 2026",
-            "readTime": "8 min read"
-        },
-        {
-            "tag": "Setup",
-            "title": "Once Human HWID spoofer: when and how on PC",
-            "slug": "once-human-hwid-spoofer",
-            "image": "/images/blog/once-human-hwid-spoofer.png",
-            "desc": "Hardware ID resets, verification steps, and pairing (or not) with gameplay software.",
-            "date": "Nov 5, 2026",
-            "readTime": "9 min read"
-        },
-        {
-            "tag": "Guides",
-            "title": "UGC Tool for Once Human: appeals and case tracking",
-            "slug": "once-human-ugc-tool",
-            "image": "/images/blog/once-human-ugc-tool.png",
-            "desc": "Unban & Governance Control workspace—workflows, evidence templates, not hands-on hacking.",
-            "date": "Nov 4, 2026",
-            "readTime": "8 min read"
-        },
-        {
-            "tag": "Guides",
-            "title": "Once Human account recovery after restrictions",
-            "slug": "once-human-account-recovery",
-            "image": "/images/blog/once-human-account-recovery.png",
-            "desc": "Ban types, evidence gathering, and realistic expectations for Steam and Epic PC accounts.",
-            "date": "Nov 3, 2026",
-            "readTime": "9 min read"
-        },
-        {
-            "tag": "Setup",
-            "title": "Cloud DMA for Once Human: scope and prerequisites",
-            "slug": "once-human-cloud-dma",
-            "image": "/images/blog/once-human-cloud-dma.png",
-            "desc": "What Cloud DMA covers, firmware checks, and why it is not the default cheat path.",
-            "date": "Nov 2, 2026",
-            "readTime": "10 min read"
-        },
-        {
-            "tag": "Setup",
-            "title": "Once Human PC requirements for cheats and utilities",
-            "slug": "once-human-pc-requirements",
-            "image": "/images/blog/once-human-pc-requirements.png",
-            "desc": "Windows builds, GPU headroom, storefront clients, and DMA hardware notes for PC-only tools.",
-            "date": "Nov 1, 2026",
-            "readTime": "8 min read"
-        }
-    ],
+    items: [],
   },
   toolkit: {
     eyebrow: 'Software',
@@ -473,6 +365,13 @@ export const en: Translations = {
     subtitle: 'Let us know how we can help.',
     channels: [
       {
+        icon: 'compatDiscord',
+        title: 'Community Discord',
+        desc: 'Join for setup help, status pings, and merchant support hours after checkout.',
+        linkLabel: 'Join Discord',
+        href: DISCORD_INVITE_URL,
+      },
+      {
         icon: 'users',
         title: 'Chat before checkout',
         desc: 'Speak to our team about PC software and utilities.',
@@ -492,13 +391,6 @@ export const en: Translations = {
         desc: 'Compatibility, bans and setup—before you buy.',
         linkLabel: 'View all FAQ',
         href: '/faq/',
-      },
-      {
-        icon: 'clock',
-        title: 'Live operators',
-        desc: 'Merchant support hours vary by tier—see your portal after checkout.',
-        linkLabel: 'Open contact page',
-        href: '/support/',
       },
     ],
     ticketTitle: 'Include in your ticket',
@@ -692,7 +584,7 @@ export const en: Translations = {
     browseCheatsMobile: 'Start checkout',
     homeAria: 'Once Human Cheats home',
     checkoutAria: 'Start checkout',
-    discordAria: 'Contact Once Human Cheats support',
+    discordAria: 'Join Once Human Cheats on Discord',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     themeLight: 'Switch to light mode',

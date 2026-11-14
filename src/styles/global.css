@@ -245,9 +245,10 @@ html.dark #why-us .why-compare-other-card :hover .icon-app {
   top: 1rem;
 }
 
-/* Navbar (desktop + mobile sheet): primary on hover only — not when .is-active */
+/* Navbar active page — highlight set in Header.astro + reinforced here */
 a.nav-link[data-nav-link].is-active {
-  color: var(--muted-foreground);
+  color: var(--primary);
+  font-weight: 600;
 }
 
 a.nav-link[data-nav-link].is-active:hover {

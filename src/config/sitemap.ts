@@ -5,7 +5,7 @@ import { parseBlogDate } from '../utils/schema';
 const buildDate = new Date().toISOString();
 
 const blogLastmod = new Map(
-  blogPosts.map((post) => [`/blog/${post.slug}/`, parseBlogDate(post.date)] as const),
+  blogPosts.map((post) => [`/blogs/${post.slug}/`, parseBlogDate(post.date)] as const),
 );
 
 function pathnameFromUrl(url: string): string {
@@ -28,7 +28,7 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     return item;
   }
 
-  if (path === '/blog/') {
+  if (path === '/blogs/') {
     item.priority = 0.9;
     item.changefreq = 'weekly';
     return item;
@@ -46,7 +46,7 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     return item;
   }
 
-  if (path.startsWith('/blog/')) {
+  if (path.startsWith('/blogs/') && path !== '/blogs/') {
     item.priority = 0.7;
     item.changefreq = 'monthly';
     item.lastmod = blogLastmod.get(path) ?? buildDate;

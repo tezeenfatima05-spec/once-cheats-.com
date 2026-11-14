@@ -1,6 +1,14 @@
 ---
 import { t } from '../i18n';
 import { checkoutPath } from '../config/checkout';
+import { isNavLinkActive } from '../utils/nav';
+import { EXTERNAL_LINK_REL, isExternalHref } from '../utils/link';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
 import { Button } from '@/components/starwind/button';
 import AnimatedThemeSwitch from './AnimatedThemeSwitch.astro';
 import {
@@ -32,21 +40,35 @@ const purchaseUrl = checkoutPath('onceHuman');
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
     <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
-      <span class="truncate lowercase" aria-hidden="true">once human <span class="text-primary">cheats</span></span>
+      <span class="truncate text-base tracking-wide sm:text-lg" aria-hidden="true">
+        ONCE HUMAN <span class="text-primary">CHEATS</span>
+      </span>
     </a>
 
     <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex" aria-label="Primary">
-      {t.nav.map((link) => (
+      {t.nav.map((link) => {
+        const active = isNavLinkActive(currentPath, link.href);
+        const external = isExternalHref(link.href);
+        return (
         <a
           href={link.href}
-          class="nav-link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          class:list={[
+            'nav-link inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors',
+            active
+              ? 'is-active bg-primary/10 font-semibold text-primary'
+              : 'text-muted-foreground hover:text-primary',
+          ]}
           data-nav-link
+          aria-current={active ? 'page' : undefined}
+          aria-label={link.ariaLabel}
+          {...(external ? { target: '_blank', rel: EXTERNAL_LINK_REL } : {})}
           {...(link.scrollTarget ? { 'data-scroll-target': link.scrollTarget } : {})}
         >
           <Icon name={navIcons[link.label] ?? 'navFeatures'} size={16} />
           {link.label}
         </a>
-      ))}
+      );
+      })}
     </nav>
 
     <div class="flex items-center gap-2">
@@ -72,17 +94,29 @@ const purchaseUrl = checkoutPath('onceHuman');
             <SheetTitle>{t.site.name}</SheetTitle>
           </SheetHeader>
           <nav class="flex flex-col gap-1" aria-label="Mobile">
-            {t.nav.map((link) => (
+            {t.nav.map((link) => {
+              const active = isNavLinkActive(currentPath, link.href);
+              const external = isExternalHref(link.href);
+              return (
               <a
                 href={link.href}
-                class="nav-link flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                class:list={[
+                  'nav-link flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  active
+                    ? 'is-active bg-primary/10 font-semibold text-primary'
+                    : 'text-muted-foreground hover:bg-muted hover:text-primary',
+                ]}
                 data-nav-link
+                aria-current={active ? 'page' : undefined}
+                aria-label={link.ariaLabel}
+                {...(external ? { target: '_blank', rel: EXTERNAL_LINK_REL } : {})}
                 {...(link.scrollTarget ? { 'data-scroll-target': link.scrollTarget } : {})}
               >
                 <Icon name={navIcons[link.label] ?? 'navFeatures'} size={16} />
                 {link.label}
               </a>
-            ))}
+            );
+            })}
           </nav>
           <Button as="a" href={purchaseUrl} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria}>
             {t.ui.browseCheatsMobile}

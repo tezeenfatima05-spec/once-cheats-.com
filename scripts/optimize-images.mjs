@@ -31,4 +31,30 @@ for (const dir of dirs) {
   await optimizeDir(dir);
 }
 
+/** Responsive widths for full-size WebP masters (product screenshots). */
+async function optimizeWebpMasters(relativeDir) {
+  const dir = path.join(root, relativeDir);
+  if (!fs.existsSync(dir)) return;
+
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => /\.webp$/i.test(file) && !/-\d+\.webp$/i.test(file));
+
+  for (const file of files) {
+    const input = path.join(dir, file);
+    const base = file.replace(/\.webp$/i, '');
+
+    for (const width of widths) {
+      const output = path.join(dir, `${base}-${width}.webp`);
+      await sharp(input)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 82, effort: 4 })
+        .toFile(output);
+      console.log(`Wrote ${path.relative(root, output)}`);
+    }
+  }
+}
+
+await optimizeWebpMasters('public/images/products/once-human');
+
 console.log('Image optimization complete.');

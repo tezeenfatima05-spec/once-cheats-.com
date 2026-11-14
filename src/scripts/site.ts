@@ -30,6 +30,11 @@ function initNavHighlight() {
 
     link.classList.toggle('is-active', isActive);
     if (isActive) {
+      link.classList.add('font-semibold', 'text-primary', 'bg-primary/10');
+    } else {
+      link.classList.remove('font-semibold', 'text-primary', 'bg-primary/10');
+    }
+    if (isActive) {
       link.setAttribute('aria-current', 'page');
     } else {
       link.removeAttribute('aria-current');

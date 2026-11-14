@@ -19,6 +19,7 @@ import JsonLd from '../components/JsonLd.astro';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: 'website' | 'article';
@@ -31,6 +32,7 @@ interface Props {
 const {
   title = t.site.title,
   description = t.site.description,
+  keywords,
   ogImage = DEFAULT_OG_IMAGE,
   ogImageAlt = title,
   ogType = 'website',
@@ -64,6 +66,7 @@ const robotsContent = noindex
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
     <meta name="author" content={t.site.name} />
     <meta name="robots" content={robotsContent} />
     <meta name="googlebot" content={robotsContent} />
@@ -139,7 +142,7 @@ const robotsContent = noindex
   </head>
   <body class="min-h-screen bg-background text-foreground">
     <button type="button" class="skip-link" data-skip-to-main>{t.ui.skipLink}</button>
-    <Header />
+    <Header currentPath={Astro.url.pathname} />
     <main id="main-content">
       <slot />
     </main>

@@ -18,7 +18,7 @@ const sourceTimestamp = (path?: string) => {
 };
 ---
 
-<BaseLayout title={seo.title} description={seo.description} jsonLd={[
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} jsonLd={[
   collectionPageSchema({ name: 'Once Human Forum (illustrative)', description: seo.description, url: '/forum/' }),
   breadcrumbSchema(breadcrumbs),
 ]}>
@@ -27,9 +27,12 @@ const sourceTimestamp = (path?: string) => {
       <Breadcrumbs items={breadcrumbs} />
       <header class="forum-hero">
         <div>
-          <p class="section-header__eyebrow">Illustrative discussions</p>
+          <p class="section-header__eyebrow">Illustrative discussions — read-only examples</p>
           <h1>Once Human community forum</h1>
-          <p class="forum-hero__copy">Read-only example threads about ESP, aim settings, compatibility, and utilities—not live customer chat.</p>
+          <p class="forum-hero__copy">
+            Example threads about ESP, aim settings, compatibility, and utilities—not live customer chat or verified
+            purchases.
+          </p>
         </div>
         <a class="forum-create" href="/blogs/"><Icon name="messageCircle" size={17} /> Explore the guides</a>
       </header>
@@ -96,10 +99,10 @@ const sourceTimestamp = (path?: string) => {
           <section class="forum-side-card forum-about" id="community-guidelines">
             <div class="forum-side-card__banner"></div>
             <div class="forum-about__content">
-              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="" width="34" height="34" /></span><h2>Once Human Cheats Community</h2></div>
+              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="" width="34" height="34" aria-hidden="true" /></span><h2>Once Human Cheats Community</h2></div>
               <p>Illustrative Once Human software discussions—read-only examples, not live support.</p>
               <div class="forum-stats"><span><b>{forumPosts.length}</b> guide discussions</span><span><b>{forumCategories.length}</b> topics</span></div>
-              <a class="forum-join" href="/blog/">Explore all guides</a>
+              <a class="forum-join" href="/blogs/">Explore all guides</a>
             </div>
           </section>
           <section class="forum-side-card" id="communities">

@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/icons/Icon.astro';
 import { resolvePageSeo } from '../../config/seo';
 import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
+import { Button } from '@/components/starwind/button';
 
 const seo = resolvePageSeo('/reviews/');
 const breadcrumbs = [
@@ -12,17 +14,26 @@ const breadcrumbs = [
 
 /** No fabricated reviews — populate when genuine published reviews exist. */
 const publishedReviews: never[] = [];
+
+const productFilters = [
+  { id: 'all', label: 'All products' },
+  { id: 'pc-software', label: 'PC Software' },
+  { id: 'hwid-spoofer', label: 'HWID Spoofer' },
+  { id: 'ugc', label: 'UGC Tool' },
+  { id: 'cloud-dma', label: 'Cloud DMA' },
+];
 ---
 
 <BaseLayout
   title={seo.title}
   description={seo.description}
+  keywords={seo.keywords}
   jsonLd={[
     collectionPageSchema({ name: 'Once Human Cheats Reviews', description: seo.description, url: '/reviews/' }),
     breadcrumbSchema(breadcrumbs),
   ]}
 >
-  <section class="py-8 md:py-12">
+  <section class="py-8 md:py-12" data-reviews-page>
     <div class="mx-auto max-w-6xl px-5">
       <Breadcrumbs items={breadcrumbs} />
       <header class="max-w-2xl space-y-3">
@@ -33,20 +44,136 @@ const publishedReviews: never[] = [];
         </p>
       </header>
 
-      {
-        publishedReviews.length === 0 && (
-          <div
-            class="mt-12 rounded-2xl border border-dashed border-border bg-muted/20 px-6 py-14 text-center"
-            role="status"
-          >
-            <p class="text-lg font-medium">No published reviews yet</p>
-            <p class="mt-2 text-sm text-muted-foreground">
-              Check back after genuine reviews are collected, or read buying guides on{' '}
-              <a href="/blogs/" class="text-primary underline-offset-2 hover:underline">Blogs</a>.
-            </p>
+      <div
+        class="mt-10 flex flex-col gap-4 rounded-2xl border border-border bg-card/40 p-4 md:flex-row md:flex-wrap md:items-end md:gap-6"
+        role="search"
+      >
+        <div class="min-w-[12rem] flex-1">
+          <label for="reviews-search" class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Search reviews
+          </label>
+          <div class="mt-1.5 flex items-center gap-2 rounded-xl border border-border bg-background px-3 py-2">
+            <Icon name="search" size={16} class="shrink-0 text-muted-foreground" />
+            <input
+              id="reviews-search"
+              type="search"
+              class="w-full bg-transparent text-sm outline-none"
+              placeholder="Keyword in review text"
+              data-reviews-search
+              autocomplete="off"
+            />
           </div>
-        )
-      }
+        </div>
+
+        <div class="min-w-[10rem]">
+          <label for="reviews-rating" class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Rating
+          </label>
+          <select
+            id="reviews-rating"
+            class="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm"
+            data-reviews-rating
+          >
+            <option value="all">Show all ratings</option>
+            <option value="5">5 stars</option>
+            <option value="4">4 stars</option>
+            <option value="3">3 stars</option>
+            <option value="2">2 stars</option>
+            <option value="1">1 star</option>
+          </select>
+        </div>
+
+        <div class="min-w-[10rem]">
+          <label for="reviews-product" class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Product
+          </label>
+          <select
+            id="reviews-product"
+            class="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm"
+            data-reviews-product
+          >
+            {productFilters.map((p) => (
+              <option value={p.id}>{p.label}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="min-w-[10rem]">
+          <label for="reviews-sort" class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Sort
+          </label>
+          <select
+            id="reviews-sort"
+            class="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm"
+            data-reviews-sort
+          >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="rating-high">Highest rating</option>
+            <option value="rating-low">Lowest rating</option>
+          </select>
+        </div>
+
+        <div class="flex gap-2 pb-0.5 md:pb-0">
+          <label class="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
+            <input type="checkbox" class="rounded border-border" data-reviews-with-text disabled />
+            Reviews with text only
+          </label>
+        </div>
+
+        <Button type="button" variant="outline" size="default" class="rounded-xl" data-reviews-reset>
+          Reset filters
+        </Button>
+      </div>
+
+      <p class="mt-4 text-sm text-muted-foreground" data-reviews-count role="status">
+        {publishedReviews.length} published reviews
+      </p>
+
+      <div class="mt-6 grid gap-4" data-reviews-list>
+        {
+          publishedReviews.length === 0 && (
+            <div
+              class="rounded-2xl border border-dashed border-border bg-muted/20 px-6 py-14 text-center"
+              role="status"
+            >
+              <p class="text-lg font-medium">No published reviews yet</p>
+              <p class="mt-2 text-sm text-muted-foreground">
+                Filters are ready for genuine data. Until then, read buying guides on{' '}
+                <a href="/blogs/" class="text-primary underline-offset-2 hover:underline">
+                  Blogs
+                </a>
+                .
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <nav class="mt-8 flex justify-center gap-2" aria-label="Reviews pagination" data-reviews-pagination hidden>
+        <Button type="button" variant="outline" size="sm" class="rounded-lg" disabled>Previous</Button>
+        <Button type="button" variant="outline" size="sm" class="rounded-lg" disabled>Next</Button>
+      </nav>
     </div>
   </section>
+
+  <script>
+    const root = document.querySelector('[data-reviews-page]');
+    if (root) {
+      const reset = root.querySelector<HTMLButtonElement>('[data-reviews-reset]');
+      const search = root.querySelector<HTMLInputElement>('[data-reviews-search]');
+      const rating = root.querySelector<HTMLSelectElement>('[data-reviews-rating]');
+      const product = root.querySelector<HTMLSelectElement>('[data-reviews-product]');
+      const sort = root.querySelector<HTMLSelectElement>('[data-reviews-sort]');
+      const withText = root.querySelector<HTMLInputElement>('[data-reviews-with-text]');
+
+      reset?.addEventListener('click', () => {
+        if (search) search.value = '';
+        if (rating) rating.value = 'all';
+        if (product) product.value = 'all';
+        if (sort) sort.value = 'newest';
+        if (withText) withText.checked = false;
+      });
+    }
+  </script>
 </BaseLayout>

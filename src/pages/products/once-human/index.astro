@@ -34,6 +34,7 @@ function cardLabel(product: (typeof productPages)[number]) {
 <BaseLayout
   title={seo.title}
   description={seo.description}
+  keywords={seo.keywords}
   jsonLd={[
     collectionPageSchema({
       name: productHub.title,
@@ -71,7 +72,6 @@ function cardLabel(product: (typeof productPages)[number]) {
             badge={product.badge}
             variant={product.variant}
             buyLabel="Buy now"
-            viewLabel="View details"
           />
         ))}
       </div>

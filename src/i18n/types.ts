@@ -108,6 +108,7 @@ export interface Translations {
     title: string;
     subtitle: string;
     ctaPrimary: string;
+    ctaBuyNow: string;
     ctaSupport: string;
     modesLabel: string;
     modes: string[];

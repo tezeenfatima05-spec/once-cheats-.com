@@ -1,7 +1,7 @@
 {
-  "name": "DotaCheats",
-  "short_name": "DotaCheats",
-  "description": "Dota 2 cheats with scripts, map hack, zoom hack and skin changer for PC.",
+  "name": "Once Human Cheats",
+  "short_name": "Once Human",
+  "description": "Once Human PC software guides, ESP and aim assist explainers, and honest compatibility notes for oncecheats.com.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -12,7 +12,14 @@
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-master.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/favicon-32.png",
