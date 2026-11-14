@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { CHECKOUT_URLS } from '../src/config/checkout-redirects.mjs';
+import { getDistContentRoots } from './dist-root.mjs';
 
 const root = process.cwd();
-const dist = path.join(root, 'dist');
 
 const FILE_RE = /\.(astro|ts|tsx|mjs|js|json|md|html|css|svg|txt|xml|webmanifest)$/i;
 
@@ -72,7 +72,7 @@ const targets = [
   ...walk(path.join(root, 'public')),
   ...walk(path.join(root, 'scripts')),
   ...walk(path.join(root, 'docs')),
-  ...(fs.existsSync(dist) ? walk(dist) : []),
+  ...getDistContentRoots(root).flatMap((d) => walk(d)),
 ];
 
 const rootIndex = path.join(root, 'index.html');

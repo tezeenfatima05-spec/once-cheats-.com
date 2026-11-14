@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getDistContentRoots } from './dist-root.mjs';
 
 /** Drop source PNGs from dist — pages serve WebP variants only. */
-const distImages = path.resolve('dist/images');
 let removed = 0;
 let bytes = 0;
 
@@ -24,7 +24,9 @@ function walk(dir) {
   }
 }
 
-walk(distImages);
+for (const root of getDistContentRoots()) {
+  walk(path.join(root, 'images'));
+}
 console.log(
-  `Pruned ${removed} source PNG(s) from dist/images (${(bytes / 1024 / 1024).toFixed(1)} MB).`,
+  `Pruned ${removed} source PNG(s) from dist image dirs (${(bytes / 1024 / 1024).toFixed(1)} MB).`,
 );

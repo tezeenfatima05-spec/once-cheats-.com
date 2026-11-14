@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getPrimaryDistContentRoot } from './dist-root.mjs';
 
 const root = process.cwd();
-const dist = path.join(root, 'dist');
+const dist = getPrimaryDistContentRoot(root);
 const out = path.join(root, '.seo-baseline', 'fields.txt');
 
 const SAMPLES = [

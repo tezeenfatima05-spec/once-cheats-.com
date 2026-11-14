@@ -4,15 +4,19 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { findSitemapSourceDir, getPrimaryDistContentRoot } from './dist-root.mjs';
 
 const SITE_ORIGIN = 'https://oncecheats.com';
-const dist = path.join(process.cwd(), 'dist');
+const contentRoot = getPrimaryDistContentRoot();
+const sitemapDir = findSitemapSourceDir() ?? contentRoot;
 
-const sitemap = path.join(dist, 'sitemap.xml');
-const robots = path.join(dist, 'robots.txt');
+const sitemap = path.join(sitemapDir, 'sitemap.xml');
+const robots = path.join(contentRoot, 'robots.txt');
 
 if (!fs.existsSync(sitemap)) {
-  console.error('verify-sitemap-domain: missing dist/sitemap.xml — run build first');
+  console.error(
+    'verify-sitemap-domain: missing sitemap.xml under dist/ or dist/client/ — run build first',
+  );
   process.exit(1);
 }
 

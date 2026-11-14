@@ -1,9 +1,12 @@
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
+  output: 'static',
+  adapter: cloudflare(),
   site: 'https://oncecheats.com',
   trailingSlash: 'always',
   redirects: {

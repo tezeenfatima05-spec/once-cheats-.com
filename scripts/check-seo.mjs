@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getDistContentRoots, normalizeDistRel } from './dist-root.mjs';
 
 const root = process.cwd();
-const dist = path.join(root, 'dist');
 const SITE = 'oncecheats.com';
 
 const SKIP_H1 = new Set([
@@ -37,9 +37,9 @@ function extractAll(re, text) {
   return [...text.matchAll(re)].map((m) => m[1]?.trim() ?? '');
 }
 
-const files = walkHtml(dist);
+const files = getDistContentRoots(root).flatMap((dir) => walkHtml(dir));
 if (!files.length) {
-  console.error('check-seo: no HTML in dist/ — run npm run build first');
+  console.error('check-seo: no HTML in dist/ or dist/client/ — run npm run build first');
   process.exit(1);
 }
 
@@ -48,6 +48,7 @@ const issues = [];
 
 for (const file of files) {
   const rel = relPosix(file);
+  const relKey = normalizeDistRel(rel);
   const html = fs.readFileSync(file, 'utf8');
 
   const title = html.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1]?.trim() ?? '';
@@ -77,10 +78,10 @@ for (const file of files) {
     }
   }
 
-  if (!desc && !NOINDEX_OK.has(rel)) issues.push({ rel, code: 'missing-description' });
+  if (!desc && !NOINDEX_OK.has(relKey)) issues.push({ rel, code: 'missing-description' });
   else if (
     desc &&
-    rel !== 'dist/404.html' &&
+    relKey !== 'dist/404.html' &&
     (desc.length < 70 || desc.length > 190)
   ) {
     issues.push({ rel, code: 'description-length', note: String(desc.length) });
@@ -92,7 +93,7 @@ for (const file of files) {
 
   const noindex = /noindex/i.test(robots);
 
-  if (!noindex && !NOINDEX_OK.has(rel)) {
+  if (!noindex && !NOINDEX_OK.has(relKey)) {
     if (!keywords) issues.push({ rel, code: 'missing-keywords' });
     else {
       if (keywords.length < 24 || keywords.length > 320) {
@@ -106,14 +107,14 @@ for (const file of files) {
       }
     }
   }
-  if (noindex && !NOINDEX_OK.has(rel)) {
+  if (noindex && !NOINDEX_OK.has(relKey)) {
     issues.push({ rel, code: 'unexpected-noindex', note: robots });
   }
   if (!noindex && /index\.html$/.test(rel) && !robots.includes('index')) {
     issues.push({ rel, code: 'missing-index-robots', note: robots || '(empty)' });
   }
 
-  if (!SKIP_H1.has(rel)) {
+  if (!SKIP_H1.has(relKey)) {
     if (h1s.length !== 1) {
       issues.push({ rel, code: 'h1-count', note: String(h1s.length) });
     }
@@ -121,7 +122,7 @@ for (const file of files) {
 }
 
 for (const [title, paths] of titles) {
-  const filtered = paths.filter((p) => !SKIP_DUPLICATE_TITLE.has(p));
+  const filtered = paths.filter((p) => !SKIP_DUPLICATE_TITLE.has(normalizeDistRel(p)));
   if (filtered.length > 1) {
     issues.push({ rel: filtered.join(', '), code: 'duplicate-title', note: title });
   }
