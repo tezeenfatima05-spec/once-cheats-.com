@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /go/
+
+Sitemap: https://oncecheats.com/sitemap.xml
+
+# RSS: https://oncecheats.com/rss.xml

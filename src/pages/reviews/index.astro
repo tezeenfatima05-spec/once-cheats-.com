@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { resolvePageSeo } from '../../config/seo';
+import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
+
+const seo = resolvePageSeo('/reviews/');
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Reviews', path: '/reviews/' },
+];
+
+/** No fabricated reviews — populate when genuine published reviews exist. */
+const publishedReviews: never[] = [];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  jsonLd={[
+    collectionPageSchema({ name: 'Once Human Cheats Reviews', description: seo.description, url: '/reviews/' }),
+    breadcrumbSchema(breadcrumbs),
+  ]}
+>
+  <section class="py-8 md:py-12">
+    <div class="mx-auto max-w-6xl px-5">
+      <Breadcrumbs items={breadcrumbs} />
+      <header class="max-w-2xl space-y-3">
+        <h1 class="text-3xl font-bold uppercase md:text-4xl">Reviews</h1>
+        <p class="text-muted-foreground">
+          Published customer reviews will appear here when verified data is available. oncecheats.com does not invent
+          ratings or testimonials.
+        </p>
+      </header>
+
+      {
+        publishedReviews.length === 0 && (
+          <div
+            class="mt-12 rounded-2xl border border-dashed border-border bg-muted/20 px-6 py-14 text-center"
+            role="status"
+          >
+            <p class="text-lg font-medium">No published reviews yet</p>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Check back after genuine reviews are collected, or read buying guides on{' '}
+              <a href="/blogs/" class="text-primary underline-offset-2 hover:underline">Blogs</a>.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
