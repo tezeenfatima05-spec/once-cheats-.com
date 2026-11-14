@@ -62,11 +62,8 @@ function relPosix(file) {
 function isLegitimateException(rel, id) {
   const norm = rel.replace(/\\/g, '/');
   if (REDIRECT_ALLOWLIST.has(norm)) {
-    if (id === 'dota-path' || id === 'dota-game') return true;
+    return id === 'dota-path' || id === 'dota-game';
   }
-  if (id === 'dota-path' && rel.includes('products/dota-2-cheats')) return true;
-  if (id === 'dota-game' && rel === 'dist/products/dota-2-cheats/index.html') return true;
-  if (id === 'dota-path' && rel === 'dist/products/dota-2-cheats/index.html') return true;
   return false;
 }
 

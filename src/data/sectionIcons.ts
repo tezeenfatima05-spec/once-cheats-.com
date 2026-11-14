@@ -3,7 +3,7 @@ import type { IconName } from '../components/icons/types';
 export const featureIcons: Record<string, IconName> = {
   Scripts: 'stepCrosshair',
   'Map cheat / ESP': 'featureEsp',
-  'Minimap & Runes': 'featureRadar',
+  'Minimap & Radar': 'featureRadar',
   'Auto Combo': 'featureAimbot',
   'Utility Suite': 'featureUtilitySuite',
   'Auto Farm Bot': 'compareAutoFarm',

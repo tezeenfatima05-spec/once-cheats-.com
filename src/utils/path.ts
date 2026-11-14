@@ -18,8 +18,6 @@ export const LEGACY_PATH_MAP: Record<string, string> = {
   '/blog/': '/blogs/',
   '/contact': '/support/',
   '/contact/': '/support/',
-  '/products/dota-2-cheats': PRODUCT_BASE,
-  '/products/dota-2-cheats/': PRODUCT_BASE,
 };
 
 export function normalizeInternalPath(href: string): string {

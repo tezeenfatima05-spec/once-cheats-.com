@@ -17,14 +17,12 @@ function walkHtml(dir, files = []) {
 
 const SKIP_H1 = new Set([
   'dist/404.html',
-  'dist/products/dota-2-cheats/index.html',
   'dist/blog/index.html',
   'dist/cheats/index.html',
   'dist/contact/index.html',
 ]);
 const NOINDEX_OK = new Set([
   'dist/404.html',
-  'dist/products/dota-2-cheats/index.html',
   'dist/blog/index.html',
   'dist/cheats/index.html',
   'dist/contact/index.html',

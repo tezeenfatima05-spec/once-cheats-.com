@@ -7,22 +7,17 @@ const SITE = 'oncecheats.com';
 
 const SKIP_H1 = new Set([
   'dist/404.html',
-  'dist/products/dota-2-cheats/index.html',
   'dist/blog/index.html',
   'dist/cheats/index.html',
   'dist/contact/index.html',
 ]);
 const NOINDEX_OK = new Set([
   'dist/404.html',
-  'dist/products/dota-2-cheats/index.html',
   'dist/blog/index.html',
   'dist/cheats/index.html',
   'dist/contact/index.html',
 ]);
-const SKIP_DUPLICATE_TITLE = new Set([
-  'dist/cheats/index.html',
-  'dist/products/dota-2-cheats/index.html',
-]);
+const SKIP_DUPLICATE_TITLE = new Set(['dist/cheats/index.html']);
 
 function walkHtml(dir, files = []) {
   if (!fs.existsSync(dir)) return files;

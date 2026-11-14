@@ -6,8 +6,6 @@ export const PATH_REDIRECTS = new Map([
   ['/blog/', '/blogs/'],
   ['/contact', '/support/'],
   ['/contact/', '/support/'],
-  ['/products/dota-2-cheats', '/products/once-human/'],
-  ['/products/dota-2-cheats/', '/products/once-human/'],
 ]);
 
 export function resolvePathRedirect(pathname) {

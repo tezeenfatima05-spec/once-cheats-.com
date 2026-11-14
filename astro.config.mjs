@@ -8,7 +8,6 @@ export default defineConfig({
   trailingSlash: 'always',
   redirects: {
     '/cheats/': '/products/once-human/',
-    '/products/dota-2-cheats/': '/products/once-human/',
     '/blog/': '/blogs/',
     '/contact/': '/support/',
   },
@@ -25,8 +24,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/404') &&
         !page.includes('/go/') &&
-        !page.includes('/blog/') &&
-        !page.includes('/products/dota-2-cheats'),
+        !page.includes('/blog/'),
       serialize: sitemapSerialize,
     }),
   ],
